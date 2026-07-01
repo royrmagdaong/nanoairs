@@ -67,7 +67,6 @@ export default function Home() {
               loading='eager'
             />
             <Image
-              ref={imageRef}
               src="/images/IMG_0291.PNG"
               alt="Logo"
               width={1600}
@@ -76,7 +75,6 @@ export default function Home() {
               className={`${displayContainer11?'':'hidden'} absolute z-index-30 top-0`}
             />
             <Image
-              ref={imageRef}
               src="/images/IMG_0292.PNG"
               alt="Logo"
               width={1600}
@@ -85,7 +83,6 @@ export default function Home() {
               className={`${displayContainer3?'':'hidden'} absolute z-index-30 top-0`}
             />
             <Image
-              ref={imageRef}
               src="/images/IMG_0293.PNG"
               alt="Logo"
               width={1600}
@@ -94,7 +91,6 @@ export default function Home() {
               className={`${displayContainer2?'':'hidden'} absolute z-index-30 top-0`}
             />
             <Image
-              ref={imageRef}
               src="/images/IMG_0294.PNG"
               alt="Logo"
               width={1600}
