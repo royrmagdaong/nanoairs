@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 
 export default function Home() {
-  const imageRef = useRef(null)
+  const imageRef = useRef<HTMLImageElement | null>(null)
   const [imageWidth, setImageWidth] = useState(1600)
   const [imageHeight, setImageHeight] = useState(1600*9/16)
   const [displayContainer1, setDisplayContainer1] = useState(false)
