@@ -6,6 +6,8 @@ export default function Home() {
   const imageRef = useRef<HTMLImageElement | null>(null)
   const [imageWidth, setImageWidth] = useState(1600)
   const [imageHeight, setImageHeight] = useState(1600*9/16)
+  const [imagePrototypeWidth, setImagePrototypeWidth] = useState(1300)
+
   const [displayContainer1, setDisplayContainer1] = useState(false)
   const [displayContainer2, setDisplayContainer2] = useState(false)
   const [displayContainer3, setDisplayContainer3] = useState(false)
@@ -27,7 +29,7 @@ export default function Home() {
 
   const heightMultiplier = 0.058
 
-  useEffect(() => {
+useEffect(() => {
   const update = () => {
     if (!imageRef.current) return
 
@@ -39,9 +41,6 @@ export default function Home() {
 
     setImageWidth(width)
     setImageHeight(height)
-
-    console.log(width)
-    console.log(height)
   }
 
   update()
@@ -59,10 +58,60 @@ export default function Home() {
   }
 }, [])
 
+
+// zoom in - zoom out functionality ----------------------------------------------------------------
+let timeout: ReturnType<typeof setTimeout>
+let timeout2: ReturnType<typeof setTimeout>
+
+const handleScroll = (e:any) => {
+  clearTimeout(timeout)
+  clearTimeout(timeout2)
+  timeout = setTimeout(() => {
+    // console.log(e.deltaY)
+    if (e.deltaY > 0) {
+      if(imagePrototypeWidth > 600) {
+        setImagePrototypeWidth(prev => prev -  (10*5))
+      } else {
+        console.log('max scroll down reached')
+      }
+    }else{
+      if(imagePrototypeWidth < 1800) {
+        setImagePrototypeWidth(prev => prev +  (10*5))
+      } else {
+        console.log('max scroll up reached')
+      }
+    }
+    console.log('image width', imagePrototypeWidth)
+  }, 150)
+
+  // update size of all images
+  timeout2 = setTimeout(()=>{
+    const update = () => {
+      if (!imageRef.current) return
+        const width = imageRef.current.clientWidth
+        const height = imageRef.current.clientHeight
+        setImageWidth(width)
+        setImageHeight(height)
+    }
+    update()
+
+    // console.log('update images width')
+  },1000)
+}
+
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll)
+  return () => {
+    clearTimeout(timeout)
+    window.removeEventListener('scroll', handleScroll)
+  }
+}, [])
+// end of zoom in zoom out ----------------------------------------------------------------
+
   
   return (
-    <div className="">
-      <main className="flex h-screen items-center justify-center bg-blue-100">
+    <div className="bg-blue-100  overflow-hidden" onWheel={handleScroll}>
+      <main className="flex h-screen items-center justify-center " >
          <div className='relative'>
             {/* images */}
             <div>
@@ -70,14 +119,14 @@ export default function Home() {
               ref={imageRef}
               src="/images/green/prototype.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
             />
             <Image
               src="/images/green/C11.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer11?'':'hidden'} absolute z-index-30 top-0`}
@@ -85,7 +134,7 @@ export default function Home() {
             <Image
               src="/images/green/C10.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer10?'':'hidden'} absolute z-index-30 top-0`}
@@ -93,7 +142,7 @@ export default function Home() {
             <Image
               src="/images/green/C9.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer9?'':'hidden'} absolute z-index-30 top-0`}
@@ -101,7 +150,7 @@ export default function Home() {
             <Image
               src="/images/green/C8.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer8?'':'hidden'} absolute z-index-30 top-0`}
@@ -109,7 +158,7 @@ export default function Home() {
             <Image
               src="/images/green/C7.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer7?'':'hidden'} absolute z-index-30 top-0`}
@@ -117,7 +166,7 @@ export default function Home() {
             <Image
               src="/images/green/C6.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer6?'':'hidden'} absolute z-index-30 top-0`}
@@ -125,7 +174,7 @@ export default function Home() {
             <Image
               src="/images/green/C5.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer5?'':'hidden'} absolute z-index-30 top-0`}
@@ -133,7 +182,7 @@ export default function Home() {
             <Image
               src="/images/green/C4.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer4?'':'hidden'} absolute z-index-30 top-0`}
@@ -141,7 +190,7 @@ export default function Home() {
             <Image
               src="/images/green/C3.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer3?'':'hidden'} absolute z-index-30 top-0`}
@@ -149,7 +198,7 @@ export default function Home() {
             <Image
               src="/images/green/C2.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer2?'':'hidden'} absolute z-index-30 top-0`}
@@ -157,7 +206,7 @@ export default function Home() {
             <Image
               src="/images/green/C1.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayContainer1?'':'hidden'} absolute z-index-30 top-0`}
@@ -167,7 +216,7 @@ export default function Home() {
             <Image
               src="/images/green/T1.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayT1?'':'hidden'} absolute z-index-30 top-0`}
@@ -176,7 +225,7 @@ export default function Home() {
             <Image
               src="/images/green/Tank1.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayTank1?'':'hidden'} absolute z-index-30 top-0`}
@@ -185,7 +234,7 @@ export default function Home() {
             <Image
               src="/images/green/sensors.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displaySensors?'':'hidden'} absolute z-index-30 top-0`}
@@ -194,7 +243,7 @@ export default function Home() {
             <Image
               src="/images/green/sensor-node.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displaySensorNode?'':'hidden'} absolute z-index-30 top-0`}
@@ -203,7 +252,7 @@ export default function Home() {
             <Image
               src="/images/green/control-panel.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayControlPanel?'':'hidden'} absolute z-index-30 top-0`}
@@ -212,7 +261,7 @@ export default function Home() {
             <Image
               src="/images/green/heater.PNG"
               alt="Logo"
-              width={1300}
+              width={imagePrototypeWidth}
               height={0}
               loading='eager'
               className={`${displayHeater?'':'hidden'} absolute z-index-30 top-0`}
