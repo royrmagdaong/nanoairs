@@ -1,6 +1,9 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
+import HeaderDateContainer from '../components/header-date-container'
+import Sidebar from '../components/sidebar'
+import StatusDataBox from '../components/status-data-box'
 
 export default function Home() {
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -84,7 +87,7 @@ const handleScroll = (e:any) => {
         console.log('max scroll up reached')
       }
     }
-    console.log('image width', imagePrototypeWidth)
+    // console.log('image width', imagePrototypeWidth)
 
     // update size of all images
     timeout2 = setTimeout(()=>{
@@ -119,8 +122,8 @@ useEffect(() => {
       }
 
       mouseCursorTimeout.current = setTimeout(() => {
-        console.log('mouse x position:', e.clientX)
-        console.log('mouse y position:', e.clientY)
+        // console.log('mouse x position:', e.clientX)
+        // console.log('mouse y position:', e.clientY)
         setTooltipLeftPos(e.clientX + 20)
         setTooltipTopPos(e.clientY + 50)
       }, 20)
@@ -142,7 +145,12 @@ useEffect(() => {
 
   
   return (
-    <div className="bg-blue-100  overflow-hidden" onWheel={handleScroll}>
+    <div className="bg-gray-700 overflow-hidden" onWheel={handleScroll}>
+
+      <HeaderDateContainer />
+      <Sidebar />
+      <StatusDataBox />
+
       <main className="flex h-screen items-center justify-center " >
          <div className='relative'>
             {/* images */}
