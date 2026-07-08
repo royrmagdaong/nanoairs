@@ -106,7 +106,7 @@ export default function Dashboard() {
     responsive: true,
     plugins: {
         legend: {
-        position: 'bottom',
+        position: 'bottom' as const,
         labels: {
             boxWidth: 12,
             boxHeight: 12,
@@ -121,12 +121,12 @@ export default function Dashboard() {
     },
   };
 
-  const options_bar = {
+  const options_bar_temp = {
     responsive: true,
     plugins: {
         legend: {
         display: false,
-        position: 'bottom',
+        position: 'bottom' as const,
         labels: {
             boxWidth: 12,
             boxHeight: 12
@@ -135,6 +135,24 @@ export default function Dashboard() {
         title: {
         display: true,
         text: 'Temperature',
+        },
+    },
+  };
+
+  const options_bar_do = {
+    responsive: true,
+    plugins: {
+        legend: {
+        display: false,
+        position: 'bottom' as const,
+        labels: {
+            boxWidth: 12,
+            boxHeight: 12
+        }
+        },
+        title: {
+        display: true,
+        text: 'Dissolved Oxygen',
         },
     },
   };
@@ -168,8 +186,8 @@ export default function Dashboard() {
               <Line options={options} data={paramComparison} />
             </div>
             <div className="col-span-1 p-4">
-              <Bar options={options_bar} data={tempWeeklyChart} />
-              <Bar options={options_bar} data={DOWeeklyChart} />
+              <Bar options={options_bar_temp} data={tempWeeklyChart} />
+              <Bar options={options_bar_do} data={DOWeeklyChart} />
             </div>
           </div>
         </div>
