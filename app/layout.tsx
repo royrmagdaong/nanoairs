@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NANO AIRS",
-  description: "WEB APP MONITORING FOR NANO AIRS - ISSDA4PH DOST PROGRAM",
+  title: "ISSDA4PH",
+  description: "WEB APP MONITORING FOR ISSDA4PH",
 };
 
 export default function RootLayout({
