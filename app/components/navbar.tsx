@@ -1,7 +1,7 @@
 
 export default function NavBar() {
   return (
-    <nav className="fixed left-0 top-0 bottom-0 w-60 bg-gray-900 text-white flex flex-col items-center py-4">
+    <nav className="fixed left-0 top-0 bottom-0 w-60 bg-white text-gray-600 border-r-1 border-gray-300 shadow-lg shadow-gray-500 flex flex-col items-center py-4">
         Navbar
     </nav>
   );
