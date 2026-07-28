@@ -3,10 +3,11 @@
 import NavBar from "@/app/components/navbar";
 import SensorCardGauge from "@/app/components/sensor-card-gauge"
 import PolarAreaChart from '@/app/components/polar-area';
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 export default function Dashboard() {
   const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <div className="">

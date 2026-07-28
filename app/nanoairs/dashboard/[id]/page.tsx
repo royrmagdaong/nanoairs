@@ -1,6 +1,8 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react';
+
 import NavBar from "@/app/components/navbar";
 import SensorCard from "@/app/components/sensor-card"
 import AIDiagnosis from "@/app/components/ai-diagnosis"
@@ -9,6 +11,19 @@ import ChartParamsComparison from "@/app/components/chart-params-comparison"
 
 export default function Dashboard() {
 const params = useParams()
+const [activeLink, setActiveLink] = useState('')
+
+useEffect(()=>{
+  if(params.id === 'raceways-1'){
+      setActiveLink('raceways 1')
+    }else if(params.id === 'raceways-2'){
+      setActiveLink('raceways 2')
+    }else if(params.id === 'control-pond-1'){
+      setActiveLink('control pond 1')
+    }else if(params.id === 'control-pond-2'){
+      setActiveLink('control pond 2')
+    }
+}, [])
 
   if(params.id === 'raceways-1' || params.id === 'raceways-2' || params.id === 'control-pond-1' || params.id === 'control-pond-2'){
     return (
@@ -18,7 +33,7 @@ const params = useParams()
         <main className="ml-60 px-8">
 
           <div className="mt-4 mb-3">
-            Dashboard &gt; <span className='capitalize'>{params.id}</span>
+            Dashboard &gt; <span className='capitalize'>{activeLink}</span>
           </div>
 
           <div className=" grid grid-cols-4 grid-row-6">
