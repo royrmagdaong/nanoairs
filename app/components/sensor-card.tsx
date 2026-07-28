@@ -1,3 +1,5 @@
+'use client'
+
 import GaugeComponent from 'react-gauge-component';
 import { useState } from "react";
 
