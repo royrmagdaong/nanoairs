@@ -28,7 +28,7 @@ export default function SensorCard(props:any) {
                   color: '#B9C5A7',
                   showTick: true,
                   tooltip: {
-                      text: 'Too low Temperature!'
+                      text: `Too low ${props.title}`
                   },
                 },
                 {
@@ -36,7 +36,7 @@ export default function SensorCard(props:any) {
                   color: '#FFA82F',
                   showTick: true,
                   tooltip: {
-                      text: 'Low Temperature!'
+                      text: `Low ${props.title}`
                   }
                 },
                 {
@@ -44,19 +44,19 @@ export default function SensorCard(props:any) {
                   color: '#0E9E0E',
                   showTick: true,
                   tooltip: {
-                      text: 'OK Temperature!'
+                      text: `OK ${props.title}`
                   }
                 },
                 {
                   limit: tempRange.high_upper_limit, color: '#FFA82F', showTick: true,
                   tooltip: {
-                      text: 'High Temperature!'
+                      text: `High ${props.title}`
                   }
                 },
                 {
                   color: '#EA4228',
                   tooltip: {
-                      text: 'Too high Temperature!'
+                      text: `Too high ${props.title}`
                   }
                 }
             ]
@@ -68,19 +68,20 @@ export default function SensorCard(props:any) {
                 elastic: true,
             }}
             labels={{
-            valueLabel: { formatTextValue: value => value + 'ºC', style: {display:'none'} },
-            tickLabels: {
+              valueLabel: { formatTextValue: value => value + '', style: {display:'none'}, hide: true },
+              tickLabels: {
+                hideMinMax: false,
                 type: 'outer',
                 defaultTickValueConfig: { 
-                formatTextValue: (value) => value + 'ºC' ,
-                style: {fontSize: 12}
-            },
+                    formatTextValue: (value) => value + '' ,
+                    style: {fontSize: 9},
+                },
                 ticks: [
-                // { value: 5 },
-                // { value: sensorData?.rtd },
-                // { value: 50 }
+                  // { value: 5 },
+                  // { value: sensorData?.rtd },
+                  // { value: 50 }
                 ],
-            }
+              }
             }}
             value={9}
             minValue={5}
@@ -89,30 +90,34 @@ export default function SensorCard(props:any) {
         </div>
         <div className='text-center mt-2'>
             <div className='text-xl font-black'>{props.value} {props.units}</div>
-            <div className='text-sm'>{props.title}</div>
+            <div className='text-xs text-gray-500' style={{letterSpacing: '1px'}}>{props.title}</div>
         </div>
-        <div className='grid grid-cols-2 text-sm mt-2'>
+        <div className='flex justify-center text-sm mt-2'>
+          <div className='flex justify-around flex-col mr-8'>
             <div className='flex items-center'>
               <div style={{height: '8px', width: '8px', background: '#0E9E0E'}} className='mr-1 rounded-full'></div>
               <span>Normal</span>
             </div>
             <div className='flex items-center'>
-              <div style={{height: '8px', width: '8px', background: '#FFA82F'}} className='mr-1 rounded-full'></div>
-              <span>Warning</span>
-            </div>
-            <div className='flex items-center'>
               <div style={{height: '8px', width: '8px', background: '#B9C5A7'}} className='mr-1 rounded-full'></div>
               <span>Low</span>
+            </div>
+          </div>
+          <div className='flex justify-around flex-col '>
+            <div className='flex items-center'>
+              <div style={{height: '8px', width: '8px', background: '#FFA82F'}} className='mr-1 rounded-full'></div>
+              <span>Warning</span>
             </div>
             <div className='flex items-center'>
               <div style={{height: '8px', width: '8px', background: '#DA4131'}} className='mr-1 rounded-full'></div>
               <span>Danger</span>
             </div>
+          </div>
         </div>
       </div>
-      <div className="outline-gray-300 px-4 py-3 outline rounded-lg ">
-          <div className='text-xs mb-1' style={{letterSpacing:'1px'}}>Average {props.title}</div>
-          <div className='text-2xl font-bold '>{props.average} {props.units}</div>
+      <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-4">
+          <div className='' style={{letterSpacing:'1px', fontSize: '11px'}}>Average {props.title}</div>
+          <div className='text-lg font-bold '>{props.average} {props.units}</div>
       </div>
     </div>
   );

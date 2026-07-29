@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react';
 
 import NavBar from "@/app/components/navbar";
@@ -11,6 +11,7 @@ import ChartParamsComparison from "@/app/components/chart-params-comparison"
 
 export default function Dashboard() {
 const params = useParams()
+const router = useRouter()
 const [activeLink, setActiveLink] = useState('')
 
 useEffect(()=>{
@@ -32,8 +33,8 @@ useEffect(()=>{
         <NavBar />
         <main className="ml-60 px-8">
 
-          <div className="mt-4 mb-3">
-            Dashboard &gt; <span className='capitalize'>{activeLink}</span>
+          <div className="mt-4 mb-3 text-sm text-gray-500">
+            <span className='hover:text-cyan-400 hover:underline cursor-pointer' onClick={()=>{router.push('/nanoairs/dashboard')}}>Dashboard</span> &gt; <span className='capitalize'>{activeLink}</span>
           </div>
 
           <div className=" grid grid-cols-4 grid-row-6">
