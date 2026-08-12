@@ -115,7 +115,7 @@ export default function SensorCard(props:any) {
           </div>
         </div>
       </div>
-      <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-4">
+      <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-3">
           <div className='' style={{letterSpacing:'1px', fontSize: '11px'}}>Average {props.title}</div>
           <div className='text-lg font-bold '>{props.average} {props.units}</div>
       </div>

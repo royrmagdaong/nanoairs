@@ -33,7 +33,7 @@ useEffect(()=>{
         <NavBar />
         <main className="ml-60 px-8">
 
-          <div className="mt-4 mb-3 text-sm text-gray-500">
+          <div className="mt-4 mb-4 text-sm text-gray-500">
             <span className='hover:text-cyan-400 hover:underline cursor-pointer' onClick={()=>{router.push('/nanoairs/dashboard')}}>Dashboard</span> &gt; <span className='capitalize'>{activeLink}</span>
           </div>
 
@@ -49,7 +49,7 @@ useEffect(()=>{
             </div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-3">
             <SensorCard title={'Temperature'} value={'32.3'} average={'32.1'} units={'ºC'}/>
             <SensorCard title={'pH'} value={'8.4'} average={'8.1'} units={''}/>
             <SensorCard title={'Salinity'} value={'24.13'} average={'21.5'} units={'ppt'}/>
