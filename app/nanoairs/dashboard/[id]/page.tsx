@@ -3,10 +3,12 @@
 import { useParams, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react';
 
+
 import NavBar from "@/app/components/navbar";
 import SensorCard from "@/app/components/sensor-card"
 import AIDiagnosis from "@/app/components/ai-diagnosis"
 import ChartParamsComparison from "@/app/components/chart-params-comparison"
+import ActivityLogs from "@/app/components/activity-logs"
 
 
 export default function Dashboard() {
@@ -43,7 +45,7 @@ useEffect(()=>{
               <AIDiagnosis />
             </div>
             <div className=" col-span-1 row-span-5 border-gray-300 border rounded-lg">
-              
+              <ActivityLogs />
             </div>
             <div className="mr-3 col-span-3 row-span-2 border-gray-300 border rounded-lg">
               <ChartParamsComparison />

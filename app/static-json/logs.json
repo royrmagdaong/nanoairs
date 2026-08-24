@@ -1,0 +1,142 @@
+[
+  {
+    "component": "Pump 1",
+    "status": "On",
+    "value": 1,
+    "unit": "State",
+    "date": "Aug 24, 12:16 pm"
+  },
+  {
+    "component": "Pump 2",
+    "status": "Off",
+    "value": 0,
+    "unit": "State",
+    "date": "Aug 24, 12:15 pm"
+  },
+  {
+    "component": "DO Sensor R1",
+    "status": "Normal",
+    "value": 7.84,
+    "unit": "mg/L",
+    "date": "Aug 24, 12:16 pm"
+  },
+  {
+    "component": "DO Sensor R2",
+    "status": "Warning",
+    "value": 4.21,
+    "unit": "mg/L",
+    "date": "Aug 24, 12:14 pm"
+  },
+  {
+    "component": "pH Sensor R1",
+    "status": "Danger",
+    "value": 8.72,
+    "unit": "pH",
+    "date": "Aug 24, 12:13 pm"
+  },
+  {
+    "component": "pH Sensor R2",
+    "status": "Normal",
+    "value": 7.31,
+    "unit": "pH",
+    "date": "Aug 24, 12:12 pm"
+  },
+  {
+    "component": "Temp Sensor R1",
+    "status": "Warning",
+    "value": 31.8,
+    "unit": "°C",
+    "date": "Aug 24, 12:10 pm"
+  },
+  {
+    "component": "Temp Sensor R2",
+    "status": "Normal",
+    "value": 28.6,
+    "unit": "°C",
+    "date": "Aug 24, 12:09 pm"
+  },
+  {
+    "component": "Water Level Sensor",
+    "status": "Low",
+    "value": 24.5,
+    "unit": "%",
+    "date": "Aug 24, 12:08 pm"
+  },
+  {
+    "component": "Aerator 1",
+    "status": "On",
+    "value": 1450,
+    "unit": "RPM",
+    "date": "Aug 24, 12:07 pm"
+  },
+  {
+    "component": "Aerator 2",
+    "status": "Off",
+    "value": 0,
+    "unit": "RPM",
+    "date": "Aug 24, 12:05 pm"
+  },
+  {
+    "component": "Flow Sensor R1",
+    "status": "Normal",
+    "value": 12.4,
+    "unit": "L/min",
+    "date": "Aug 24, 12:04 pm"
+  },
+  {
+    "component": "Flow Sensor R2",
+    "status": "Warning",
+    "value": 5.8,
+    "unit": "L/min",
+    "date": "Aug 24, 12:02 pm"
+  },
+  {
+    "component": "Humidity Sensor",
+    "status": "Normal",
+    "value": 68.4,
+    "unit": "%",
+    "date": "Aug 24, 11:59 am"
+  },
+  {
+    "component": "CO2 Sensor",
+    "status": "Danger",
+    "value": 1840,
+    "unit": "ppm",
+    "date": "Aug 24, 11:56 am"
+  },
+  {
+    "component": "Cooling Fan 1",
+    "status": "On",
+    "value": 1250,
+    "unit": "RPM",
+    "date": "Aug 24, 11:54 am"
+  },
+  {
+    "component": "Cooling Fan 2",
+    "status": "Warning",
+    "value": 720,
+    "unit": "RPM",
+    "date": "Aug 24, 11:52 am"
+  },
+  {
+    "component": "pH Sensor R3",
+    "status": "Normal",
+    "value": 7.48,
+    "unit": "pH",
+    "date": "Aug 24, 11:49 am"
+  },
+  {
+    "component": "DO Sensor R3",
+    "status": "Danger",
+    "value": 2.84,
+    "unit": "mg/L",
+    "date": "Aug 24, 11:46 am"
+  },
+  {
+    "component": "Pump 3",
+    "status": "Maintenance",
+    "value": 1260,
+    "unit": "Hours",
+    "date": "Aug 24, 11:42 am"
+  }
+]
