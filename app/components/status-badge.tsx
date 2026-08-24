@@ -5,7 +5,7 @@ interface StatusProps {
 export default function Status({name}: StatusProps) {
   return (
     <div
-      className={`outline rounded-sm inline px-2 py-1 text-xs font-medium ${
+      className={`outline rounded-sm px-1 py-1 font-medium ${
         name === "Danger"
           ? "bg-red-200 text-red-700"
           : name === "Off"
@@ -16,6 +16,8 @@ export default function Status({name}: StatusProps) {
           ? "bg-orange-200 text-orange-700"
           : "bg-green-200 text-green-600"
       }`}
+
+      style={{fontSize: "11px"}}
     >
       <span>{name}</span>
     </div>
