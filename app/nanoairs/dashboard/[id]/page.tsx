@@ -34,6 +34,7 @@ useEffect(()=>{
         <main className="ml-60 px-8">
 
           <div className="mt-4 mb-4 text-sm text-gray-500">
+            <i className="material-icons">&#xe871;</i>
             <span className='hover:text-cyan-400 hover:underline cursor-pointer' onClick={()=>{router.push('/nanoairs/dashboard')}}>Dashboard</span> &gt; <span className='capitalize'>{activeLink}</span>
           </div>
 
