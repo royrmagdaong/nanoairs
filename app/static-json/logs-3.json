@@ -1,111 +1,111 @@
 [
   {
-    "component": "Pump R1",
+    "component": "Pump CP1",
     "status": "On",
     "value": 1,
     "unit": "State",
     "date": "Aug 24, 12:16 pm"
   },
   {
-    "component": "DO Sensor R1",
+    "component": "DO Sensor CP1",
     "status": "Normal",
     "value": 7.84,
     "unit": "mg/L",
     "date": "Aug 24, 12:16 pm"
   },
   {
-    "component": "pH Sensor R1",
+    "component": "pH Sensor CP1",
     "status": "Danger",
     "value": 8.72,
     "unit": "pH",
     "date": "Aug 24, 12:13 pm"
   },
   {
-    "component": "Temp Sensor R1",
+    "component": "Temp Sensor CP1",
     "status": "Warning",
     "value": 31.8,
     "unit": "°C",
     "date": "Aug 24, 12:10 pm"
   },
   {
-    "component": "Aerator R1",
+    "component": "Aerator CP1",
     "status": "On",
     "value": 1450,
     "unit": "RPM",
     "date": "Aug 24, 12:07 pm"
   },
   {
-    "component": "Flow Sensor R1",
+    "component": "Flow Sensor CP1",
     "status": "Normal",
     "value": 12.4,
     "unit": "L/min",
     "date": "Aug 24, 12:04 pm"
   },
   {
-    "component": "CO2 Sensor R1",
+    "component": "CO2 Sensor CP1",
     "status": "Danger",
     "value": 1840,
     "unit": "ppm",
     "date": "Aug 24, 11:56 am"
   },
   {
-    "component": "Cooling Fan R1",
+    "component": "Cooling Fan CP1",
     "status": "Off",
     "value": 0,
     "unit": "RPM",
     "date": "Aug 24, 11:54 am"
   },
   {
-    "component": "pH Sensor R1",
+    "component": "pH Sensor CP1",
     "status": "Warning",
     "value": 7.91,
     "unit": "pH",
     "date": "Aug 24, 11:51 am"
   },
   {
-    "component": "DO Sensor R1",
+    "component": "DO Sensor CP1",
     "status": "Warning",
     "value": 4.21,
     "unit": "mg/L",
     "date": "Aug 24, 11:48 am"
   },
   {
-    "component": "Pump R1",
+    "component": "Pump CP1",
     "status": "Off",
     "value": 0,
     "unit": "State",
     "date": "Aug 24, 11:45 am"
   },
   {
-    "component": "Temp Sensor R1",
+    "component": "Temp Sensor CP1",
     "status": "Normal",
     "value": 28.6,
     "unit": "°C",
     "date": "Aug 24, 11:42 am"
   },
   {
-    "component": "Flow Sensor R1",
+    "component": "Flow Sensor CP1",
     "status": "Warning",
     "value": 5.8,
     "unit": "L/min",
     "date": "Aug 24, 11:36 am"
   },
   {
-    "component": "Aerator R1",
+    "component": "Aerator CP1",
     "status": "Off",
     "value": 0,
     "unit": "RPM",
     "date": "Aug 24, 11:33 am"
   },
   {
-    "component": "CO2 Sensor R1",
+    "component": "CO2 Sensor CP1",
     "status": "Normal",
     "value": 820,
     "unit": "ppm",
     "date": "Aug 24, 11:27 am"
   },
   {
-    "component": "Cooling Fan R1",
+    "component": "Cooling Fan CP1",
     "status": "On",
     "value": 1250,
     "unit": "RPM",

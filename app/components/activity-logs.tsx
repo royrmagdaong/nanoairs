@@ -3,13 +3,37 @@
 import Status from "./status-badge"
 import Pagination from '@mui/material/Pagination';
 import logs from "@/app/static-json/logs.json"
+import logs2 from "@/app/static-json/logs-2.json"
+import logs3 from "@/app/static-json/logs-3.json"
+import logs4 from "@/app/static-json/logs-4.json"
 import { useState, useEffect } from "react";
+import { usePathname } from 'next/navigation'
 
 export default function AIDiagnosis() {
-  const [logsData, setLogsData] = useState(logs)
+  interface Log {
+    component: string;
+    status: string;
+    value: number;
+    unit: string;
+    date: string;
+  }
+  
+  const [logsData, setLogsData] = useState<Log[]>([]);
+  const pathname = usePathname()
   
   useEffect(()=>{
-    console.log(logs)
+    // console.log(logs)
+    setLogsData(logs2)
+
+    if(pathname.includes('raceways-1')){
+      setLogsData(logs)
+    }else if(pathname.includes('raceways-2')){
+      setLogsData(logs2)
+    }else if(pathname.includes('control-pond-1')){
+      setLogsData(logs3)
+    }else if(pathname.includes('control-pond-2')){
+      setLogsData(logs4)
+    }
   }, [])
 
   return (
@@ -19,7 +43,7 @@ export default function AIDiagnosis() {
         <table className="min-w-full">
           <thead>
             <tr className="">
-              <th className="px-4 pt-5 pb-3 text-left text-xs uppercase font-semibold">Component</th>
+              <th className="pl-3 pt-5 pb-3 text-left text-xs uppercase font-semibold">Component</th>
               <th className=" pt-3 pb-2 text-center text-xs uppercase font-semibold">Status</th>
               <th className="pl-3 pt-3 pb-2 text-left text-xs uppercase font-semibold">Date</th>
             </tr>
@@ -28,11 +52,11 @@ export default function AIDiagnosis() {
             {
               logsData.slice(0, 11).map((log, index) => 
                 <tr key={index} className="odd:bg-white even:bg-secondary text-xs">
-                  <td className="pl-4 py-3">{log.component}</td>
+                  <td className="pl-3 py-3">{log.component}</td>
                   <td className="text-center">
                     <Status name={log.status}/>
                   </td>
-                  <td className="pl-3">{log.date}</td>
+                  <td className="pl-4">{log.date}</td>
                 </tr>
               )
             }
