@@ -38,8 +38,8 @@ export default function ChartParamsComparison() {
                       fill: true,
                       label: 'Temp in °C',
                       data: [2.1,42,23,12,9,5,12],
-                      borderColor: 'rgba(255, 99, 132, 0.5)',
-                      backgroundColor: 'rgba(255, 99, 132, 0.35)',
+                      borderColor: '#BB6BD984',
+                      backgroundColor: '#BB6BD924',
                       tension: 0.4,
                       pointRadius: 2,
                       hidden: false
@@ -48,8 +48,8 @@ export default function ChartParamsComparison() {
                       fill: true,
                       label: 'DO in mg/L',
                       data: [2.1,42,23,12,9,5,12].reverse(),
-                      borderColor: '#9b51e0a2',
-                      backgroundColor: '#9b51e065',
+                      borderColor: '#56CCF299',
+                      backgroundColor: '#56CCF235',
                       tension: 0.4,
                       pointRadius: 2,
                       hidden: false
@@ -62,7 +62,7 @@ export default function ChartParamsComparison() {
                       backgroundColor: 'rgba(58, 211, 91, 0.35)',
                       tension: 0.4,
                       pointRadius: 2,
-                      hidden: false
+                      hidden: true
                   },
                   {
                       fill: true,
@@ -72,7 +72,7 @@ export default function ChartParamsComparison() {
                       backgroundColor: 'rgba(219, 167, 54, 0.35)',
                       tension: 0.4,
                       pointRadius: 2,
-                      hidden: false
+                      hidden: true
                   },
               ],
           }
@@ -84,7 +84,7 @@ export default function ChartParamsComparison() {
         {
             label: 'Dataset 1',
             data: [2.1,42,23,12,9,5,12],
-            backgroundColor: 'rgba(255, 99, 132, 0.9)',
+            backgroundColor: '#56CCF299',
         }
     ],
   })
@@ -95,7 +95,7 @@ export default function ChartParamsComparison() {
         {
             label: 'Dataset 1',
             data: [2.1,42,23,12,9,5,12],
-            backgroundColor: 'rgba(56, 179, 216, 0.9)',
+            backgroundColor: '#BB6BD994',
         }
     ],
   })

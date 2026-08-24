@@ -39,6 +39,7 @@ export default function AIDiagnosis() {
   return (
     <div className="">
 
+      {/* <div className="max-h-full overflow-y-auto"> */}
       <div className="overflow-x-auto">
         <table className="min-w-full">
           <thead>
@@ -62,10 +63,10 @@ export default function AIDiagnosis() {
             }
           </tbody>
         </table>
+      </div>
 
-        <div className="flex justify-center pt-3">
-          <Pagination count={5} variant="outlined" shape="rounded" />
-        </div>
+      <div className="flex justify-center pt-3">
+        <Pagination count={5} variant="outlined" shape="rounded" />
       </div>
 
     </div>
