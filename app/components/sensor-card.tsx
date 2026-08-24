@@ -10,10 +10,10 @@ interface SensorCardProps {
 }
 
 export default function SensorCard({
-  title,
-  value,
-  average,
-  units,
+  title = "No Data",
+  value = "--",
+  average = "--",
+  units = "",
 }: SensorCardProps) {
 
   type Range = {
