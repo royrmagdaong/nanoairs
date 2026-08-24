@@ -116,13 +116,13 @@ export default function SensorCard({
 
   return (
     <div className=" text-gray-600">
-      <div className=" px-4 py-2 outline-gray-300 outline rounded-lg  mb-2">
+      <div className=" px-8 py-4 outline-gray-300 outline rounded-lg  mb-2">
         <div>
           <GaugeComponent
             type="semicircle"
             marginInPercent={0.7}
             arc={{
-            width: 0.56,
+            width: 0.52,
             padding: 0.012,
             cornerRadius: 2.2,
             subArcs: [
