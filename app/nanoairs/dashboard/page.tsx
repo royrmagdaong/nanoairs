@@ -13,7 +13,7 @@ export default function Dashboard() {
     <div className="">
       
       <NavBar />
-      <main className="ml-60 p-6">
+      <main className="ml-70 p-6">
 
         {/* <div className="grid grid-cols-2 gap-4">
           <div className="outline outline-gray-300 rounded-b-md grid grid-cols-2">

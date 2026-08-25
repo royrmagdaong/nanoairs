@@ -33,7 +33,7 @@ useEffect(()=>{
       <div className="">
         
         <NavBar />
-        <main className="ml-60 px-8">
+        <main className="ml-70 px-6">
 
           <div className="mt-4 mb-4 text-sm text-gray-500">
             <i className="material-icons">&#xe871;</i>
