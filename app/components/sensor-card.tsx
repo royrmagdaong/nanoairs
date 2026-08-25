@@ -1,6 +1,8 @@
 'use client'
 
 import GaugeComponent from 'react-gauge-component';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
 
 interface SensorCardProps {
   title: string;
@@ -218,8 +220,29 @@ export default function SensorCard({
         </div>
       </div>
       <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-3">
-          <div className='' style={{letterSpacing:'1px', fontSize: '11px'}}>Average {title}</div>
-          <div className='text-lg font-bold '>{average} {units}</div>
+          <div className='flex items-center' style={{letterSpacing:'1px', fontSize: '11px'}}>
+            <div style={{height: '8px', width: '8px', background: '#FFA82F'}} className='mr-2 rounded-full'></div>
+            <div>Average {title}</div>
+          </div>
+          <div className='flex items-center'>
+            <div className='text-lg font-bold '>{average} {units}</div>
+            <div className={`ml-4 outline rounded-sm px-2 text-xs ${value > average ?`outline-green-300 bg-green-200 text-green-600`:`outline-red-300 bg-red-200 text-red-600`} flex items-center w-19 justify-between`}>
+              <span>{(Number(value)-Number(average)/Number(average)).toFixed(2)}%</span>
+              {
+                value > average ?
+                  <ArrowOutwardIcon
+                    sx={{
+                      fontSize: 14,
+                    }}
+                  />
+                :
+                  <CallReceivedIcon sx={{
+                      fontSize: 14,
+                    }}
+                  />
+              }
+            </div>
+          </div>
       </div>
     </div>
   );
