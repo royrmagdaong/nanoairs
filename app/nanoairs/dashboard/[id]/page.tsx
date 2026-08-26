@@ -68,7 +68,7 @@ useEffect(() => {
             <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
               <AIDiagnosis />
             </div>
-            <div className=" col-span-1 row-span-6 border-gray-300 border rounded-lg">
+            <div className=" col-span-1 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg">
               <ActivityLogs />
             </div>
             <div className="mr-3 col-span-4 row-span-5 border-gray-300 border rounded-lg">
