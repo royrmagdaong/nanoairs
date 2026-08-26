@@ -15,6 +15,11 @@ export default function Dashboard() {
 const params = useParams()
 const router = useRouter()
 const [activeLink, setActiveLink] = useState('')
+const [windowSize, setWindowSize] = useState({
+  width: 0,
+  height: 0,
+});
+
 
 useEffect(()=>{
   if(params.id === 'raceways-1'){
@@ -28,15 +33,37 @@ useEffect(()=>{
     }
 }, [])
 
+useEffect(() => {
+  const handleResize = () => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  handleResize();
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
   if(params.id === 'raceways-1' || params.id === 'raceways-2' || params.id === 'control-pond-1' || params.id === 'control-pond-2'){
     return (
+      // <div className="3xl:bg-red-100 2xl:bg-blue-100">
+      // <div className="bg-white text-black dark:bg-gray-900 dark:text-white">
       <div className="">
+      
         
         <NavBar />
-        <main className="ml-70 px-6">
+        <main className="ml-70 px-6 ">
 
           <div className="mt-4 mb-4 text-sm text-gray-500">
             <i className="material-icons">&#xe871;</i>
+            <span>width: {windowSize.width}</span>
+            <span>height: {windowSize.height}</span>
             <span className='hover:text-cyan-400 hover:underline cursor-pointer' onClick={()=>{router.push('/nanoairs/dashboard')}}>Dashboard</span> &gt; <span className='capitalize'>{activeLink}</span>
           </div>
 
