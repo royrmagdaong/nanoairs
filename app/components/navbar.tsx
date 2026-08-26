@@ -26,7 +26,7 @@ export default function NavBar() {
   },[])
 
   return (
-    <nav className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-gray-500 border-gray-300 fixed left-0 top-0 bottom-0 w-68 border-r  shadow-lg  flex flex-col py-4">
+    <nav className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-gray-500 dark:shadow-gray-600 border-gray-300 dark:border-gray-700 fixed left-0 top-0 bottom-0 w-68 border-r  shadow-lg  flex flex-col py-4">
       <div className='flex mt-6 ml-4'>
         <Image
           src="/globe.svg"

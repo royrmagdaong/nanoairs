@@ -53,14 +53,11 @@ useEffect(() => {
   if(params.id === 'raceways-1' || params.id === 'raceways-2' || params.id === 'control-pond-1' || params.id === 'control-pond-2'){
     return (
       // <div className="3xl:bg-red-100 2xl:bg-blue-100">
-      // <div className="bg-white text-black dark:bg-gray-900 dark:text-white">
-      <div className="">
-      
-        
+      <div className="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
         <NavBar />
         <main className="ml-70 px-6 ">
 
-          <div className="mt-4 mb-4 text-sm text-gray-500">
+          <div className="mt-4 mb-4 text-sm text-gray-500 dark:text-gray-100">
             <i className="material-icons">&#xe871;</i>
             <span>width: {windowSize.width}</span>
             <span>height: {windowSize.height}</span>
@@ -68,7 +65,7 @@ useEffect(() => {
           </div>
 
           <div className=" grid grid-cols-5 grid-row-6">
-            <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 rounded-lg">
+            <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
               <AIDiagnosis />
             </div>
             <div className=" col-span-1 row-span-6 border-gray-300 border rounded-lg">
