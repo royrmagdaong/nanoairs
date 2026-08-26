@@ -20,9 +20,7 @@ export default function AIDiagnosis() {
   
   const [logsData, setLogsData] = useState<Log[]>([]);
   const pathname = usePathname()
-  const [darkMode, setDarkMode] = useState(window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches)
+  const [darkMode, setDarkMode] = useState<boolean>(false)
   
   useEffect(()=>{
     // console.log(logs)
@@ -40,7 +38,11 @@ export default function AIDiagnosis() {
   }, [])
 
   useEffect(()=>{
-    
+    const isDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+    setDarkMode(isDarkMode)
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 

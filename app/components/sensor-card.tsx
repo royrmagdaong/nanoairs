@@ -126,8 +126,8 @@ export default function SensorCard({
   }
 
   return (
-    <div className=" text-gray-600">
-      <div className=" px-8 py-4 outline-gray-300 outline rounded-lg  mb-2">
+    <div className=" text-gray-600 dark:text-gray-300">
+      <div className=" px-8 py-4 outline-gray-300 dark:outline-gray-600 outline rounded-lg  mb-2">
         <div>
           <GaugeComponent
             type="semicircle"
@@ -203,7 +203,7 @@ export default function SensorCard({
         </div>
         <div className='text-center mb-1'>
             <div className='text-2xl font-bold'>{value} {units}</div>
-            <div className='text-xs text-gray-500 relative' style={{letterSpacing: '1px', top: '-3px'}}>{title}</div>
+            <div className='text-xs text-gray-500 dark:text-gray-100 relative' style={{letterSpacing: '1px', top: '-3px'}}>{title}</div>
         </div>
         <div className='flex justify-center text-sm mt-1 pb-2'>
           <div className='flex justify-around flex-col mr-8'>
@@ -228,7 +228,7 @@ export default function SensorCard({
           </div>
         </div>
       </div>
-      <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-3">
+      <div className="outline-gray-300 dark:outline-gray-600 px-4 py-2 outline rounded-lg mt-3">
           <div className='flex items-center my-1' style={{letterSpacing:'1px', fontSize: '11px'}}>
             <div style={{height: '10px', width: '10px', background: paramColors[title]}} className='mr-1 rounded-full'></div>
             <div className='text-xs'>Average {title}</div>
