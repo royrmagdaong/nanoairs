@@ -116,6 +116,15 @@ export default function SensorCard({
     tooHigh_upper_limit: 50
   };
 
+  const paramColors: Record<string, any> = {
+    pH: "#DA4131",
+    Temperature: "#BB6BD9",
+    Salinity: "#FFA82F",
+    "Dissolved Oxygen": "#00C2FF",
+    Alkalinity: "#5950D5",
+    "Dissolved CO2": "#84CD7A"
+  }
+
   return (
     <div className=" text-gray-600">
       <div className=" px-8 py-4 outline-gray-300 outline rounded-lg  mb-2">
@@ -136,14 +145,14 @@ export default function SensorCard({
                       text: `Too low ${title}`
                   },
                 },
-                {
-                  limit: paramRange.low_upper_limit,
-                  color: '#FFA82F',
-                  // showTick: true,
-                  tooltip: {
-                      text: `Low ${title}`
-                  }
-                },
+                // {
+                //   limit: paramRange.low_upper_limit,
+                //   color: '#FFA82F',
+                //   // showTick: true,
+                //   tooltip: {
+                //       text: `Low ${title}`
+                //   }
+                // },
                 {
                   limit: paramRange.ok_upper_limit,
                   color: '#0E9E0E',
@@ -220,9 +229,9 @@ export default function SensorCard({
         </div>
       </div>
       <div className="outline-gray-300 px-4 py-2 outline rounded-lg mt-3">
-          <div className='flex items-center' style={{letterSpacing:'1px', fontSize: '11px'}}>
-            <div style={{height: '8px', width: '8px', background: '#FFA82F'}} className='mr-2 rounded-full'></div>
-            <div>Average {title}</div>
+          <div className='flex items-center my-1' style={{letterSpacing:'1px', fontSize: '11px'}}>
+            <div style={{height: '10px', width: '10px', background: paramColors[title]}} className='mr-1 rounded-full'></div>
+            <div className='text-xs'>Average {title}</div>
           </div>
           <div className='flex items-center'>
             <div className='text-lg font-bold '>{average} {units}</div>
