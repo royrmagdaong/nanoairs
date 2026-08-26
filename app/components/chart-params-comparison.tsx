@@ -500,7 +500,7 @@ export default function ChartParamsComparison() {
       <div className="col-span-1 flex flex-col justify-center">
         <div className="px-4 py-3">
            <div>
-            <p className="text-xs">12 hour window</p>
+            <p className="text-xs text-gray-600">12 hour window</p>
             <div className="flex items-center-safe">
               <p className="mr-4 text-xl font-semibold text-gray-600 ">11.23 mg/L</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
@@ -522,14 +522,14 @@ export default function ChartParamsComparison() {
                 <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
                 <p>Live</p>
               </div>
-              <p className="text-xs text-gray-700">Dissolved Oxygen</p>
+              <p className="text-xs text-gray-600">Dissolved Oxygen</p>
             </div>
             <p className="text-xs text-cyan-400">view report</p>
           </div>
         </div>
         <div className="px-4 py-3 border-t border-gray-300">
           <div>
-            <p className="text-xs">12 hour window</p>
+            <p className="text-xs text-gray-600">12 hour window</p>
             <div className="flex items-center-safe">
               <p className="mr-4 text-xl font-semibold text-gray-600 ">8.01 mg/L</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
@@ -551,7 +551,7 @@ export default function ChartParamsComparison() {
                 <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
                 <p>Live</p>
               </div>
-              <p className="text-xs text-gray-700">temperature</p>
+              <p className="text-xs text-gray-600">temperature</p>
             </div>
             <p className="text-xs text-cyan-400">view report</p>
           </div>
