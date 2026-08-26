@@ -71,7 +71,7 @@ useEffect(() => {
             <div className=" col-span-1 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg">
               <ActivityLogs />
             </div>
-            <div className="mr-3 col-span-4 row-span-5 border-gray-300 border rounded-lg">
+            <div className="mr-3 col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg">
               <ChartParamsComparison />
             </div>
           </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Line, Bar } from 'react-chartjs-2';
 import {
@@ -40,6 +40,8 @@ export default function ChartParamsComparison() {
   const [salLabel, setSalLabel] = useState(false)
   const [kHLabel, setKHLabel] = useState(false)
   const [co2Label, setCO2Label] = useState(false)
+  const [darkMode, setDarkMode] = useState<boolean>(false)
+  const [dateRange, setDateRange] = useState<string>('')
 
   const [paramComparison, setParamComparison] = useState(
           {
@@ -272,9 +274,61 @@ export default function ChartParamsComparison() {
     ],
   })
 
+  useEffect(()=>{
+    const isDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+    setDarkMode(isDarkMode)
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleThemeChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        console.log("Browser changed to dark mode");
+      } else {
+        console.log("Browser changed to light mode");
+      }
+
+      const isDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      setDarkMode(isDarkMode)
+      console.log(darkMode)
+    };
+
+    // Listen for changes
+    mediaQuery.addEventListener("change", handleThemeChange);
+
+    // Cleanup listener
+    return () => {
+      mediaQuery.removeEventListener("change", handleThemeChange);
+    };
+  }, [])
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+
+      y: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -295,6 +349,25 @@ export default function ChartParamsComparison() {
   const options_bar_temp = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+
+      y: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+    },
     plugins: {
         legend: {
         display: false,
@@ -314,6 +387,25 @@ export default function ChartParamsComparison() {
   const options_bar_do = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+
+      y: {
+        ticks: {
+          color: darkMode ? "#bbbfc4" : "#4b5564",
+        },
+        grid: {
+          color: darkMode ? "#4b5564" : "#d2d2d2",
+        },
+      },
+    },
     plugins: {
         legend: {
         display: false,
@@ -429,7 +521,7 @@ export default function ChartParamsComparison() {
 
   return (
     <div className="grid grid-cols-3 h-full">
-      <div className="col-span-2 border-gray-300 border-r px-6 flex flex-col justify-center">
+      <div className="col-span-2 border-gray-300 dark:border-gray-600 border-r px-6 flex flex-col justify-center">
         <div className="flex justify-between">
           <div>
             <p>Parameters</p>
@@ -468,13 +560,40 @@ export default function ChartParamsComparison() {
             </div>
           </div>
           <div>
-            <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
+            <FormControl sx={{ 
+              m: 1, 
+              minWidth: 200,
+              "& .MuiInputLabel-root": {
+                color: darkMode? '#bbbfc4':'#4b5564',
+              },
+
+              "& .MuiOutlinedInput-root": {
+                color: darkMode ? '#bbbfc4':'#4b5564',
+
+                "& fieldset": {
+                  borderColor: darkMode ? "#4b5564" : "#bbbfc4",
+                },
+
+                "&:hover fieldset": {
+                  borderColor: darkMode ? '#bbbfc4':'#4b5564',
+                },
+
+                "&.Mui-focused fieldset": {
+                  borderColor: darkMode ? '#bbbfc4':'#4b5564',
+                },
+              },
+
+              "& .MuiSvgIcon-root": {
+                color: darkMode ? '#bbbfc4':'#4b5564',
+              },
+             }} size="small">
               <InputLabel id={`1-label`}>Jan 2026 - Dec 2026</InputLabel>
               <Select
                 aria-describedby={`1-helper-text`}
                 labelId={`1-label`}
                 id={"1"}
                 label="Age"
+                value={dateRange}
                 onChange={handleChange}
               >
                 <MenuItem value="">
@@ -500,9 +619,9 @@ export default function ChartParamsComparison() {
       <div className="col-span-1 flex flex-col justify-center">
         <div className="px-4 py-3">
            <div>
-            <p className="text-xs text-gray-600">12 hour window</p>
+            <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
             <div className="flex items-center-safe">
-              <p className="mr-4 text-xl font-semibold text-gray-600 ">11.23 mg/L</p>
+              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">11.23 mg/L</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
                 <span>5.2%</span>
                 <ArrowOutwardIcon
@@ -516,22 +635,22 @@ export default function ChartParamsComparison() {
           <div className=" h-32 flex justify-center-safe">
             <Bar options={options_bar_temp} data={tempWeeklyChart} />
           </div>
-          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 pt-2 mt-2 ">
+          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 dark:border-gray-600 pt-2 mt-2 ">
             <div className="flex">
               <div className="mr-4 bg-green-200 text-green-600 px-2 rounded outline outline-green-400  flex items-center-safe text-xs">
                 <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
                 <p>Live</p>
               </div>
-              <p className="text-xs text-gray-600">Dissolved Oxygen</p>
+              <p className="text-xs text-gray-600 dark:text-gray-300">Dissolved Oxygen</p>
             </div>
             <p className="text-xs text-cyan-400">view report</p>
           </div>
         </div>
-        <div className="px-4 py-3 border-t border-gray-300">
+        <div className="px-4 py-3 border-t border-gray-300 dark:border-gray-600">
           <div>
-            <p className="text-xs text-gray-600">12 hour window</p>
+            <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
             <div className="flex items-center-safe">
-              <p className="mr-4 text-xl font-semibold text-gray-600 ">8.01 mg/L</p>
+              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">8.01 mg/L</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
                 <span>3.1%</span>
                 <ArrowOutwardIcon
@@ -545,13 +664,13 @@ export default function ChartParamsComparison() {
           <div className=" h-32 flex justify-center-safe">
             <Line options={options_bar_do} data={DOWeeklyChart} />
           </div>
-          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 pt-2 mt-2 ">
+          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 dark:border-gray-600 pt-2 mt-2 ">
             <div className="flex">
               <div className="mr-4 bg-green-200 text-green-600 px-2 rounded outline outline-green-400 flex items-center-safe text-xs">
                 <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
                 <p>Live</p>
               </div>
-              <p className="text-xs text-gray-600">temperature</p>
+              <p className="text-xs text-gray-600 dark:text-gray-300">temperature</p>
             </div>
             <p className="text-xs text-cyan-400">view report</p>
           </div>
