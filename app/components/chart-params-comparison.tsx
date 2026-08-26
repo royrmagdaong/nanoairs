@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Line, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -187,29 +188,93 @@ export default function ChartParamsComparison() {
       )
 
   const [tempWeeklyChart, setTempWeeklyChart] = useState({
-    labels: ['6:05 am', '6:21 am', '6:46 am', '7:02 am', '7:21 am', '7:42 am', '8:05 am'],
+    labels: [
+      '6:00 am',
+      '7:00 am',
+      '8:00 am',
+      '9:00 am',
+      '10:00 am',
+      '11:00 am',
+      '12:00 pm',
+      '1:00 pm',
+      '2:00 pm',
+      '3:00 pm',
+      '4:00 pm',
+      '5:00 pm',
+    ],
     datasets: [
         {
-            label: 'Dataset 1',
-            data: [2.1,42,23,12,9,5,12],
+            label: 'Temperature',
+            data: [
+              26.4,
+              26.9,
+              27.8,
+              28.6,
+              29.7,
+              30.5,
+              31.2,
+              31.8,
+              32.1,
+              31.7,
+              30.9,
+              30.2,
+            ],
             backgroundColor: '#56CCF299',
+            barThickness: 6,
         }
     ],
   })
   
   const [DOWeeklyChart, setDOWeeklyChart] = useState({
-    labels: ['6:05 am', '6:21 am', '6:46 am', '7:02 am', '7:21 am', '7:42 am', '8:05 am'],
+    labels: [
+      '6:00 am',
+      '7:00 am',
+      '8:00 am',
+      '9:00 am',
+      '10:00 am',
+      '11:00 am',
+      '12:00 pm',
+      '1:00 pm',
+      '2:00 pm',
+      '3:00 pm',
+      '4:00 pm',
+      '5:00 pm',
+    ],
     datasets: [
         {
-            label: 'Dataset 1',
-            data: [2.1,42,23,12,9,5,12],
+            label: 'Dissolved Oxygen',
+            data: [
+              6.82,
+              6.95,
+              7.18,
+              7.42,
+              7.76,
+              8.12,
+              8.45,
+              8.62,
+              8.48,
+              8.21,
+              7.94,
+              7.68,
+            ],
             backgroundColor: '#BB6BD994',
+            borderColor: '#BB6BD9',
+            // backgroundColor: 'transparent',
+
+            // Line only
+            fill: false,
+            pointRadius: 2,
+            pointHoverRadius: 0,
+
+            // Smoothness
+            tension: 0.1,
         }
     ],
   })
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -229,6 +294,7 @@ export default function ChartParamsComparison() {
 
   const options_bar_temp = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
         legend: {
         display: false,
@@ -239,7 +305,7 @@ export default function ChartParamsComparison() {
         }
         },
         title: {
-        display: true,
+        display: false,
         text: 'Dissolved Oxygen',
         },
     }, 
@@ -247,6 +313,7 @@ export default function ChartParamsComparison() {
 
   const options_bar_do = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
         legend: {
         display: false,
@@ -257,7 +324,7 @@ export default function ChartParamsComparison() {
         }
         },
         title: {
-        display: true,
+        display: false,
         text: 'Temperature',
         },
     },
@@ -362,8 +429,8 @@ export default function ChartParamsComparison() {
 
   return (
     <div className="grid grid-cols-3 h-full">
-      <div className="col-span-2 border-gray-300 border-r pb-4 px-6 flex flex-col justify-center">
-        <div className="flex justify-between pb-2 pt-4">
+      <div className="col-span-2 border-gray-300 border-r px-6 flex flex-col justify-center">
+        <div className="flex justify-between">
           <div>
             <p>Parameters</p>
             <p>Comparison</p>
@@ -423,16 +490,72 @@ export default function ChartParamsComparison() {
             </FormControl>
           </div>
         </div>
-        <div className="w-full h-100 flex justify-center-safe">
+        <div className="h-90 flex justify-center-safe">
           <Line
             options={options}
             data={paramComparison}
           />
         </div>
       </div>
-      <div className="col-span-1 p-4 flex flex-col justify-center">
-        <Bar options={options_bar_temp} data={tempWeeklyChart} />
-        <Bar options={options_bar_do} data={DOWeeklyChart} />
+      <div className="col-span-1 flex flex-col justify-center">
+        <div className="px-4 py-3">
+           <div>
+            <p className="text-xs">12 hour window</p>
+            <div className="flex items-center-safe">
+              <p className="mr-4 text-xl font-semibold text-gray-600 ">11.23 mg/L</p>
+              <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
+                <span>5.2%</span>
+                <ArrowOutwardIcon
+                    sx={{
+                      fontSize: 14,
+                    }}
+                  />
+              </div>
+            </div>
+          </div>
+          <div className=" h-32 flex justify-center-safe">
+            <Bar options={options_bar_temp} data={tempWeeklyChart} />
+          </div>
+          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 pt-2 mt-2 ">
+            <div className="flex">
+              <div className="mr-4 bg-green-200 text-green-600 px-2 rounded outline outline-green-400  flex items-center-safe text-xs">
+                <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
+                <p>Live</p>
+              </div>
+              <p className="text-xs text-gray-700">Dissolved Oxygen</p>
+            </div>
+            <p className="text-xs text-cyan-400">view report</p>
+          </div>
+        </div>
+        <div className="px-4 py-3 border-t border-gray-300">
+          <div>
+            <p className="text-xs">12 hour window</p>
+            <div className="flex items-center-safe">
+              <p className="mr-4 text-xl font-semibold text-gray-600 ">8.01 mg/L</p>
+              <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
+                <span>3.1%</span>
+                <ArrowOutwardIcon
+                    sx={{
+                      fontSize: 14,
+                    }}
+                  />
+              </div>
+            </div>
+          </div>
+          <div className=" h-32 flex justify-center-safe">
+            <Line options={options_bar_do} data={DOWeeklyChart} />
+          </div>
+          <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 pt-2 mt-2 ">
+            <div className="flex">
+              <div className="mr-4 bg-green-200 text-green-600 px-2 rounded outline outline-green-400 flex items-center-safe text-xs">
+                <div style={{height: '6px', width: '6px'}} className="bg-green-500 rounded mr-1"></div>
+                <p>Live</p>
+              </div>
+              <p className="text-xs text-gray-700">temperature</p>
+            </div>
+            <p className="text-xs text-cyan-400">view report</p>
+          </div>
+        </div>
       </div>
     </div>
   );
