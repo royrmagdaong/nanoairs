@@ -55,14 +55,14 @@ useEffect(() => {
       // <div className="3xl:bg-red-100 2xl:bg-blue-100">
       <div className="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
         <NavBar />
-        <main className="ml-70 px-6 ">
+        <main className="ml-70 px-6 mt-3">
 
-          <div className="mt-4 mb-4 text-sm text-gray-500 dark:text-gray-100">
+          {/* <div className="mt-4 mb-4 text-sm text-gray-500 dark:text-gray-100">
             <i className="material-icons">&#xe871;</i>
             <span>width: {windowSize.width}</span>
             <span>height: {windowSize.height}</span>
             <span className='hover:text-cyan-400 hover:underline cursor-pointer' onClick={()=>{router.push('/nanoairs/dashboard')}}>Dashboard</span> &gt; <span className='capitalize'>{activeLink}</span>
-          </div>
+          </div> */}
 
           <div className=" grid grid-cols-5 grid-row-6">
             <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">

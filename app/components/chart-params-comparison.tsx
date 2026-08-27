@@ -221,8 +221,17 @@ export default function ChartParamsComparison() {
               30.9,
               30.2,
             ],
-            backgroundColor: '#56CCF299',
-            barThickness: 6,
+            backgroundColor: '#BB6BD994',
+            borderColor: '#BB6BD9',
+            // backgroundColor: 'transparent',
+
+            // Line only
+            fill: false,
+            pointRadius: 2,
+            pointHoverRadius: 0,
+
+            // Smoothness
+            tension: 0.1,
         }
     ],
   })
@@ -259,17 +268,8 @@ export default function ChartParamsComparison() {
               7.94,
               7.68,
             ],
-            backgroundColor: '#BB6BD994',
-            borderColor: '#BB6BD9',
-            // backgroundColor: 'transparent',
-
-            // Line only
-            fill: false,
-            pointRadius: 2,
-            pointHoverRadius: 0,
-
-            // Smoothness
-            tension: 0.1,
+            backgroundColor: '#56CCF299',
+            barThickness: 6,
         }
     ],
   })
@@ -621,7 +621,7 @@ export default function ChartParamsComparison() {
            <div>
             <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
             <div className="flex items-center-safe">
-              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">11.23 mg/L</p>
+              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">7.68 mg/L</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
                 <span>5.2%</span>
                 <ArrowOutwardIcon
@@ -633,7 +633,7 @@ export default function ChartParamsComparison() {
             </div>
           </div>
           <div className=" h-32 flex justify-center-safe">
-            <Bar options={options_bar_temp} data={tempWeeklyChart} />
+            <Bar options={options_bar_temp} data={DOWeeklyChart} />
           </div>
           <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 dark:border-gray-600 pt-2 mt-2 ">
             <div className="flex">
@@ -650,7 +650,7 @@ export default function ChartParamsComparison() {
           <div>
             <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
             <div className="flex items-center-safe">
-              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">8.01 mg/L</p>
+              <p className="mr-4 text-xl font-semibold text-gray-600 dark:text-gray-300">30.23 °C</p>
               <div className="flex items-center-safe bg-green-200 outline-green-400 outline text-green-600 rounded px-2 text-xs">
                 <span>3.1%</span>
                 <ArrowOutwardIcon
@@ -662,7 +662,7 @@ export default function ChartParamsComparison() {
             </div>
           </div>
           <div className=" h-32 flex justify-center-safe">
-            <Line options={options_bar_do} data={DOWeeklyChart} />
+            <Line options={options_bar_do} data={tempWeeklyChart} />
           </div>
           <div className="flex justify-between items-center-safe capitalize border-t border-gray-300 dark:border-gray-600 pt-2 mt-2 ">
             <div className="flex">
