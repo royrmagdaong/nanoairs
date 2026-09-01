@@ -191,8 +191,8 @@ const periodLabels: Record<PeriodKey, string[]> = {
 const navSections = [
   [
     { label: "Dashboard", icon: DashboardRoundedIcon, href: "/nanoairs/dashboard" },
-    { label: "Raceways 1", icon: WaterRoundedIcon, href: "/nanoairs/dashboard/v3/raceways-1", active: true },
-    { label: "Raceways 2", icon: WaterRoundedIcon, href: "/nanoairs/dashboard/raceways-2" },
+    { label: "Pond 1", icon: WaterRoundedIcon, href: "/nanoairs/dashboard/v3/raceways-1", active: true },
+    { label: "Pond 2", icon: WaterRoundedIcon, href: "/nanoairs/dashboard/raceways-2" },
     { label: "Control Pond 1", icon: OpacityRoundedIcon, href: "/nanoairs/dashboard/control-pond-1" },
     { label: "Control Pond 2", icon: OpacityRoundedIcon, href: "/nanoairs/dashboard/control-pond-2" },
   ],
