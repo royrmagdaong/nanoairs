@@ -55,7 +55,7 @@ useEffect(() => {
       // <div className="3xl:bg-red-100 2xl:bg-blue-100">
       <div className="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-100">
         <NavBar />
-        <main className="ml-70 px-6 mt-3">
+        <main className="mt-21 lg:mt-3 lg:ml-70 px-6 mb-4">
 
           {/* <div className="mt-4 mb-4 text-sm text-gray-500 dark:text-gray-100">
             <i className="material-icons">&#xe871;</i>
@@ -65,13 +65,16 @@ useEffect(() => {
           </div> */}
 
           <div className=" grid grid-cols-5 grid-row-6">
-            <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
+            <div className="mb-3 mr-3 col-span-5 lg:col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
+            {/* <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg"> */}
               <AIDiagnosis />
             </div>
-            <div className=" col-span-1 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg">
+            <div className="hidden lg:block lg:col-span-1 col-span-5 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg">
+            {/* <div className=" col-span-1 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg"> */}
               <ActivityLogs />
             </div>
-            <div className="mr-3 col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg">
+            <div className="mr-3 col-span-5 lg:col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg">
+            {/* <div className="mr-3 col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg"> */}
               <ChartParamsComparison />
             </div>
           </div>

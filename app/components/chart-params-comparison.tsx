@@ -521,7 +521,7 @@ export default function ChartParamsComparison() {
 
   return (
     <div className="grid grid-cols-3 h-full">
-      <div className="col-span-2 border-gray-300 dark:border-gray-600 border-r px-6 flex flex-col justify-center">
+      <div className="md:col-span-2 col-span-3 border-gray-300 dark:border-gray-600 border-r px-6 flex flex-col justify-center">
         <div className="flex justify-between">
           <div>
             <p>Parameters</p>
@@ -616,7 +616,7 @@ export default function ChartParamsComparison() {
           />
         </div>
       </div>
-      <div className="col-span-1 flex flex-col justify-center">
+      <div className="md:col-span-1 col-span-3 flex flex-col justify-center">
         <div className="px-4 py-3">
            <div>
             <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
