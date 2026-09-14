@@ -10,6 +10,7 @@ export default function NavBar() {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
+  const [currentRaceway, setCurrentRaceway] = useState('');
   
   const [activeLink, setActiveLink] = useState('')
 
@@ -18,12 +19,16 @@ export default function NavBar() {
 
     if(pathname.includes('raceways-1')){
       setActiveLink('raceways-1')
+      setCurrentRaceway('Pond 1')
     }else if(pathname.includes('raceways-2')){
       setActiveLink('raceways-2')
+      setCurrentRaceway('Pond 2')
     }else if(pathname.includes('control-pond-1')){
       setActiveLink('control-pond-1')
+      setCurrentRaceway('Control Pond 1')
     }else if(pathname.includes('control-pond-2')){
       setActiveLink('control-pond-2')
+      setCurrentRaceway('Control Pond 2')
     }
     
   },[])
@@ -33,7 +38,9 @@ export default function NavBar() {
       <nav className='bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-gray-500 dark:shadow-gray-600 border-gray-300 dark:border-gray-700 fixed top-0 left-0 right-0 h-15 shadow-sm
       lg:hidden flex items-center pl-4'>
         <MenuIcon onClick={() => setIsOpen(true)} sx={{ fontSize: 38 }} />
-        <h2 className='text-xl ml-2 font-medium'>NanoAirs</h2>
+        <h2 className='text-xl ml-2 font-medium'>NanoAirs </h2>
+        <span className='mx-2'>&gt; </span>
+        <span style={{fontSize: 16}}>{currentRaceway}</span>
       </nav>
 
       {/* Backdrop */}
@@ -80,12 +87,12 @@ export default function NavBar() {
               <div 
                 onClick={()=>{router.push('/nanoairs/dashboard/raceways-1')}} 
                 className={`${activeLink==='raceways-1'?'text-black bg-gray-100 dark:text-gray-100 dark:bg-gray-600 border-l-cyan-400 ':'text-gray-400 border-l-white dark:border-l-gray-800'} py-1 cursor-pointer hover:text-black hover:bg-gray-100 hover:dark:text-gray-100 hover:dark:bg-gray-600 hover:border-l-cyan-400 pl-2 border-l-3`}
-                >Raceways 1
+                >Pond 1
                 </div>
               <div 
                 onClick={()=>{router.push('/nanoairs/dashboard/raceways-2')}} 
                 className={`${activeLink==='raceways-2'?'text-black bg-gray-100 dark:text-gray-100 dark:bg-gray-600 border-l-cyan-400 ':'text-gray-400 border-l-white dark:border-l-gray-800'} py-1 cursor-pointer hover:text-black hover:bg-gray-100 hover:dark:text-gray-100 hover:dark:bg-gray-600 hover:border-l-cyan-400 pl-2 border-l-3`}
-                >Raceways 2
+                >Pond 2
               </div>
               <div 
                 onClick={()=>{router.push('/nanoairs/dashboard/control-pond-1')}} 
@@ -170,12 +177,12 @@ export default function NavBar() {
             <div 
               onClick={()=>{router.push('/nanoairs/dashboard/raceways-1')}} 
               className={`${activeLink==='raceways-1'?'text-black bg-gray-100 dark:text-gray-100 dark:bg-gray-600 border-l-cyan-400 ':'text-gray-400 border-l-white dark:border-l-gray-800'} py-1 cursor-pointer hover:text-black hover:bg-gray-100 hover:dark:text-gray-100 hover:dark:bg-gray-600 hover:border-l-cyan-400 pl-2 border-l-3`}
-              >Raceways 1
+              >Pond 1
               </div>
             <div 
               onClick={()=>{router.push('/nanoairs/dashboard/raceways-2')}} 
               className={`${activeLink==='raceways-2'?'text-black bg-gray-100 dark:text-gray-100 dark:bg-gray-600 border-l-cyan-400 ':'text-gray-400 border-l-white dark:border-l-gray-800'} py-1 cursor-pointer hover:text-black hover:bg-gray-100 hover:dark:text-gray-100 hover:dark:bg-gray-600 hover:border-l-cyan-400 pl-2 border-l-3`}
-              >Raceways 2
+              >Pond 2
             </div>
             <div 
               onClick={()=>{router.push('/nanoairs/dashboard/control-pond-1')}} 
