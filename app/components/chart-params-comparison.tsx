@@ -522,8 +522,8 @@ export default function ChartParamsComparison() {
   return (
     <div className="grid grid-cols-3 h-full">
       <div className="md:col-span-2 col-span-3 border-gray-300 dark:border-gray-600 border-r px-6 flex flex-col justify-center">
-        <div className="flex justify-between">
-          <div>
+        <div className="flex flex-col sm:flex-row justify-center md:justify-between mt-3 md:mt-0">
+          <div className="hidden md:block">
             <p>Parameters</p>
             <p>Comparison</p>
           </div>
@@ -559,7 +559,7 @@ export default function ChartParamsComparison() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="flex justify-center">
             <FormControl sx={{ 
               m: 1, 
               minWidth: 200,
