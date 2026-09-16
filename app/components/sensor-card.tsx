@@ -6,15 +6,15 @@ import CallReceivedIcon from '@mui/icons-material/CallReceived';
 
 interface SensorCardProps {
   title: string;
-  value: string;
-  average: string;
+  value: number;
+  average: number;
   units: string;
 }
 
 export default function SensorCard({
   title = "No Data",
-  value = "--",
-  average = "--",
+  value = 0,
+  average = 0,
   units = "",
 }: SensorCardProps) {
 
@@ -236,7 +236,8 @@ export default function SensorCard({
           <div className='flex items-center'>
             <div className='text-lg font-bold '>{average} {units}</div>
             <div className={`ml-4 outline rounded-sm px-1 text-xs ${value > average ?`outline-green-300 bg-green-200 text-green-600`:`outline-red-300 bg-red-200 text-red-600`} flex items-center w-15 justify-between`}>
-              <span>{(Number(value)-Number(average)/Number(average)).toFixed(1)}%</span>
+              {/* <span>{((Number(value)-Number(average)/Number(average)).toFixed(1))}%</span> */}
+              <span>0%</span>
               {
                 value > average ?
                   <ArrowOutwardIcon

@@ -5,12 +5,14 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
+import moment from 'moment'
 
 export default function NavBar() {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
   const [currentRaceway, setCurrentRaceway] = useState('');
+  const [sensorTime, setSensorTime] = useState<String|null>('')
   
   const [activeLink, setActiveLink] = useState('')
 
@@ -33,14 +35,30 @@ export default function NavBar() {
     
   },[])
 
+  useEffect(()=>{
+    
+    async function loadSensorTimer(){
+      console.log(localStorage.getItem('latestSensorReadingTime'))
+      setSensorTime(moment(localStorage.getItem('latestSensorReadingTime')).format('h:mm:ss a'))
+    }
+
+    loadSensorTimer()
+    const intervalId = setInterval(loadSensorTimer, 5_000);
+
+    return () => clearInterval(intervalId)
+  },[])
+
   return (
     <>
       <nav className='bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100 shadow-gray-500 dark:shadow-gray-600 border-gray-300 dark:border-gray-700 fixed top-0 left-0 right-0 h-15 shadow-sm
-      lg:hidden flex items-center pl-4'>
-        <MenuIcon onClick={() => setIsOpen(true)} sx={{ fontSize: 38 }} />
-        <h2 className='text-xl ml-2 font-medium'>NanoAirs </h2>
-        <span className='mx-2'>&gt; </span>
-        <span style={{fontSize: 16}}>{currentRaceway}</span>
+      lg:hidden flex justify-between items-center  pl-4 z-50'>
+        <div className='flex items-center'>
+          <MenuIcon onClick={() => setIsOpen(true)} sx={{ fontSize: 38 }} />
+          <h2 className='text-xl ml-2 font-medium'>NanoAirs </h2>
+          <span className='mx-2'>&gt; </span>
+          <span style={{fontSize: 16}}>{currentRaceway}</span>
+        </div>
+        <p className='mr-2'>{sensorTime}</p>
       </nav>
 
       {/* Backdrop */}

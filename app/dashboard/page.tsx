@@ -31,12 +31,12 @@ export default function Dashboard() {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-3">
-          <SensorCard title={'Temperature'} value={'32.3'} average={'32.1'} units={'ºC'}/>
-          <SensorCard title={'pH'} value={'8.4'} average={'8.1'} units={''}/>
-          <SensorCard title={'Salinity'} value={'24.13'} average={'21.5'} units={'ppt'}/>
-          <SensorCard title={'Dissolved Oxygen'} value={'15.5'} average={'12.54'} units={'mg/L'}/>
-          <SensorCard title={'Alkalinity'} value={'11.46'} average={'16.48'} units={'mg/L'}/>
-          <SensorCard title={'Dissolved CO2'} value={'8.47'} average={'10.24'} units={'mg/L'}/>
+          <SensorCard title={'Temperature'} value={0} average={0} units={'ºC'}/>
+          <SensorCard title={'pH'} value={0} average={0} units={''}/>
+          <SensorCard title={'Salinity'} value={0} average={0} units={'ppt'}/>
+          <SensorCard title={'Dissolved Oxygen'} value={0} average={0} units={'mg/L'}/>
+          <SensorCard title={'Alkalinity'} value={0} average={0} units={'mg/L'}/>
+          <SensorCard title={'Dissolved CO2'} value={0} average={0} units={'mg/L'}/>
         </div>
       </main> 
     </div>
