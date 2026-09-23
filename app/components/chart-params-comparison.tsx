@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { Line, Bar } from 'react-chartjs-2';
+import moment from 'moment';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -426,6 +427,348 @@ export default function ChartParamsComparison() {
     console.log('clicked!')
   }
 
+  // fetch sensors latest 20 readings
+  // useEffect(()=>{
+  //   async function getLatestReadings() {
+  //     try {
+  //       const res = await fetch("http://localhost:3005/sensor/sensors?siteName=UPV&pondNumber=1&limit=20&skip=0&sort=desc");
+  
+  //       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+  //       type SensorReading = {
+  //         dissolved_oxygen: number;
+  //         salinity: number;
+  //         temperature: number;
+  //         pH: number;
+  //         alkalinity: number;
+  //         co2: number;
+  //         created_at: string;
+  //       };
+  
+  //       const result = await res.json();
+  //       const data: SensorReading[] = result.data;
+  //       console.log('latest sensor data',data)
+
+  //       const dox: number[] = [];
+  //       const sal: number[] = [];
+  //       const temp: number[] = [];
+  //       const pH: number[] = [];
+  //       const alkalinity: number[] = [];
+  //       const co2: number[] = [];
+  //       const time_label: string[] = [];
+
+  //       // {
+  //       //     fill: true,
+  //       //     label: 'Temp',
+  //       //     data: [
+  //       //       27.1,  // Jan
+  //       //       27.8,  // Feb
+  //       //       28.9,  // Mar
+  //       //       30.2,  // Apr
+  //       //       31.4,  // May
+  //       //       32.1,  // Jun
+  //       //       31.8,  // Jul
+  //       //       31.2,  // Aug
+  //       //       30.5,  // Sep
+  //       //       29.4,  // Oct
+  //       //       28.3,  // Nov
+  //       //       27.5,  // Dec
+  //       //     ],
+  //       //     borderColor: '#BB6BD984',
+  //       //     backgroundColor: '#BB6BD924',
+  //       //     tension: 0.4,
+  //       //     pointRadius: 2,
+  //       //     hidden: false
+  //       // },
+
+  //       data.forEach(sensor => {
+  //         dox.push(sensor.dissolved_oxygen)
+  //         sal.push(sensor.salinity)
+  //         temp.push(sensor.temperature)
+  //         pH.push(sensor.pH)
+  //         alkalinity.push(sensor.alkalinity)
+  //         co2.push(sensor.co2)
+  //         time_label.push(moment(sensor.created_at).format('h:mma'))
+  //       });
+
+  //       // populate kH
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'kH'
+  //           ? {
+  //               ...dataset,
+  //               data: alkalinity,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+  //       // populate ph
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'pH'
+  //           ? {
+  //               ...dataset,
+  //               data: pH,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+  //       // populate co2
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'CO2'
+  //           ? {
+  //               ...dataset,
+  //               data: co2,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+  //       // populate DO
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'DO'
+  //           ? {
+  //               ...dataset,
+  //               data: dox,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+  //       // populate Temp
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'Temp'
+  //           ? {
+  //               ...dataset,
+  //               data: temp,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+  //       // populate Sal
+  //       setParamComparison((prev)=> ({
+  //         ...prev,
+  //         labels: [...time_label],
+  //         datasets: prev.datasets.map((dataset) =>
+  //           dataset.label === 'Sal'
+  //           ? {
+  //               ...dataset,
+  //               data: sal,
+  //             }
+  //           : dataset
+  //         )
+  //       }))
+
+  //       // console.log('dox', dox)
+  //       // console.log('sal', sal)
+  //       // console.log('temp', temp)
+  //       // console.log('ph', pH)
+  //       // console.log('alkalinity', alkalinity)
+  //       // console.log('co2', co2)
+  //       console.log('time label', time_label)
+  //     } catch (err:any) {
+  //       // setError(err.message);
+  //       console.log(err.message)
+  //     }
+  //   }
+  //   getLatestReadings()
+  
+  // }, [])
+
+
+  // fetch charts latest data 20
+  // useEffect(()=>{
+  //   async function getLatestSensorData(){
+  //     type SensorReading = {
+  //       dissolved_oxygen: number;
+  //       salinity: number;
+  //       temperature: number;
+  //       pH: number;
+  //       alkalinity: number;
+  //       co2: number;
+  //       created_at: string;
+  //     };
+
+  //     type SensorField = Exclude<keyof SensorReading, "created_at">;
+
+  //     const sensorFields: Record<string, SensorField | undefined> = {
+  //       kH: "alkalinity",
+  //       pH: "pH",
+  //       CO2: "co2",
+  //       DO: "dissolved_oxygen",
+  //       Temp: "temperature",
+  //       Sal: "salinity",
+  //     };
+
+  //     const params = new URLSearchParams({
+  //       siteName: "UPV",
+  //       pondNumber: "1",
+  //       limit: "20",
+  //       skip: "0",
+  //       sort: 'asc'
+  //     });
+
+  //     const res = await fetch(
+  //       `http://localhost:3005/sensor/sensors?${params}`
+  //     );
+
+  //     if (!res.ok) {
+  //       throw new Error(`Request failed: ${res.status}`);
+  //     }
+
+  //     const result: {
+  //       error: boolean;
+  //       message?: string;
+  //       data?: SensorReading[];
+  //     } = await res.json();
+
+  //     if (result.error || !Array.isArray(result.data)) {
+  //       throw new Error(result.message || "Invalid sensor response");
+  //     }
+
+  //     // API returns newest first; display oldest to newest on the chart.
+  //     const readings = [...result.data].reverse();
+
+  //     console.log('readings', readings)
+
+  //     const labels = readings.map((sensor) =>
+  //       moment(sensor.created_at).format("h:mma")
+  //     );
+
+  //     setParamComparison((prev) => ({
+  //       ...prev,
+  //       labels,
+  //       datasets: prev.datasets.map((dataset) => {
+  //         const field = sensorFields[dataset.label ?? ""];
+
+  //         if (!field) return dataset;
+
+  //         return {
+  //           ...dataset,
+  //           data: readings.map((sensor) => sensor[field]),
+  //         };
+  //       }),
+  //     }));
+  //   }
+
+  //   getLatestSensorData();
+  // }, [])
+
+  useEffect(() => {
+    const controller = new AbortController();
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    type SensorReading = {
+      dissolved_oxygen: number;
+      salinity: number;
+      temperature: number;
+      pH: number;
+      alkalinity: number;
+      co2: number;
+      created_at: string;
+    };
+
+    type SensorField = Exclude<keyof SensorReading, "created_at">;
+
+    const sensorFields: Record<string, SensorField | undefined> = {
+      kH: "alkalinity",
+      pH: "pH",
+      CO2: "co2",
+      DO: "dissolved_oxygen",
+      Temp: "temperature",
+      Sal: "salinity",
+    };
+
+    async function refreshChart() {
+      try {
+        const params = new URLSearchParams({
+          siteName: "UPV",
+          pondNumber: "1",
+          limit: "30",
+          skip: "0",
+          sort: 'asc'
+        });
+
+        const res = await fetch(
+          `http://localhost:3005/sensor/sensors?${params}`,
+          {
+            signal: controller.signal,
+            cache: "no-store",
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`Request failed: ${res.status}`);
+        }
+
+        const result: {
+          error: boolean;
+          message?: string;
+          data?: SensorReading[];
+        } = await res.json();
+
+        if (result.error || !Array.isArray(result.data)) {
+          throw new Error(result.message || "Invalid sensor response");
+        }
+
+        if (controller.signal.aborted) return;
+
+        // Latest 20 readings, displayed oldest to newest.
+        const readings = [...result.data].reverse();
+
+        const labels = readings.map((sensor) =>
+          moment(sensor.created_at).format("h:mma")
+        );
+
+        setParamComparison((prev) => ({
+          ...prev,
+          labels,
+          datasets: prev.datasets.map((dataset) => {
+            const field = sensorFields[dataset.label ?? ""];
+
+            if (!field) return dataset;
+
+            return {
+              ...dataset,
+              data: readings.map((sensor) => sensor[field]),
+            };
+          }),
+        }));
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          console.error("Failed to refresh chart:", error);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          timeoutId = setTimeout(refreshChart, 40_000);
+        }
+      }
+    }
+
+    void refreshChart(); // Load immediately.
+    const intervalId = setInterval(() => {
+      void refreshChart();
+      console.log('refresh chart')
+    }, 20_000);
+
+    return () => {
+      clearInterval(intervalId);
+      controller.abort();
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, []);
+
   const handleClick = (param:string) => {
     if(param==="kH") { 
       setKHLabel(!kHLabel);
@@ -559,7 +902,8 @@ export default function ChartParamsComparison() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center">{moment(Date.now()).format('DD MMM YYYY')}</div>
+          <div className="hidden ">
             <FormControl sx={{ 
               m: 1, 
               minWidth: 200,
