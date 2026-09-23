@@ -100,6 +100,7 @@ useEffect(() => {
   return () => clearInterval(intervalId) 
 }, []);
 
+
   if(params.id === 'raceways-1' || params.id === 'raceways-2' || params.id === 'control-pond-1' || params.id === 'control-pond-2'){
     return (
       // <div className="3xl:bg-red-100 2xl:bg-blue-100">
