@@ -701,7 +701,7 @@ export default function ChartParamsComparison() {
         });
 
         const res = await fetch(
-          `http://localhost:3005/sensor/sensors?${params}`,
+          `http://nanoairs.home.arpa/sensor/sensors?${params}`,
           {
             signal: controller.signal,
             cache: "no-store",
