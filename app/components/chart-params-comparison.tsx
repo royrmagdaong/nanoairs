@@ -985,7 +985,7 @@ export default function ChartParamsComparison() {
           />
         </div>
       </div>
-      <div className="md:col-span-1 col-span-3 flex flex-col justify-center">
+      {/* <div className="md:col-span-1 col-span-3 flex flex-col justify-center">
         <div className="px-4 py-3">
            <div>
             <p className="text-xs text-gray-600 dark:text-gray-300">12 hour window</p>
@@ -1044,7 +1044,7 @@ export default function ChartParamsComparison() {
             <p className="text-xs text-cyan-400">view report</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
