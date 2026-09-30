@@ -6,13 +6,24 @@ import { useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import moment from 'moment'
+import apiURL from "@/app/utils/url"
+import { CSVLink } from "react-csv";
 
 export default function NavBar() {
+  type SensorReading = {
+    date: string;
+    time: string;
+    temperature: number;
+    dissolved_oxygen: number;
+  };
+
+
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
   const [currentRaceway, setCurrentRaceway] = useState('');
   const [sensorTime, setSensorTime] = useState<String|null>('')
+  const [downloadData, setDownloadData] = useState<SensorReading[]>([]);
   
   const [activeLink, setActiveLink] = useState('')
 
@@ -47,6 +58,61 @@ export default function NavBar() {
 
     return () => clearInterval(intervalId)
   },[])
+
+  // initialized download data
+  useEffect(()=>{
+    const fetchDownloadData = async () => {
+      try {
+        let params
+        console.log('pathname', pathname)
+        if(pathname.includes('raceways-1')){
+           params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "1",
+            limit: "100000",
+            skip: "0",
+            sort: 'asc'
+          });
+        }
+
+        if(pathname.includes('raceways-2')){
+          params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "2",
+            limit: "100000",
+            skip: "0",
+            sort: 'asc'
+          });
+        }
+
+        const res = await fetch(`${apiURL}/sensor/sensors?${params}`);
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+
+        const {data} = await res.json();
+        // console.log(data)
+        
+
+        const sensorReadingContainer: SensorReading[] = [];
+
+        data.forEach((sensorReading: any) => {
+          sensorReadingContainer.push({
+            date: moment(sensorReading.created_at).format('MM/DD/YYYY'),
+            time: moment(sensorReading.created_at).format('hh:mm:ss a'),
+            temperature: sensorReading.temperature,
+            dissolved_oxygen: sensorReading.dissolved_oxygen,
+          });
+        });
+
+        setDownloadData(sensorReadingContainer.reverse())
+        console.log(sensorReadingContainer)
+
+      } catch (err:any) {
+        console.log(err.message)
+      }
+    }
+
+    fetchDownloadData()
+  }, [])
 
   return (
     <>
@@ -158,16 +224,19 @@ export default function NavBar() {
             </div>
 
             <div className='flex justify-center'>
-              <div className='bg-cyan-600 h-12 w-48 mt-12 rounded-sm flex items-center justify-center font-semibold text-sm text-white hover:text-cyan-400 hover:bg-gray-200 hover:dark:bg-gray-600 cursor-pointer'>
-                <p>Download Report</p>
-                <Image
-                    src="/globe.svg"
-                    alt="Logo"
-                    width={15}
-                    height={0}
-                    className='ml-2'
-                  />
-              </div>
+              <CSVLink data={downloadData} filename="sensor-readings.csv">
+                <div className='bg-cyan-600 h-12 w-48 mt-12 rounded-sm flex items-center justify-center font-semibold text-sm text-white hover:text-cyan-400 hover:bg-gray-200 hover:dark:bg-gray-600 cursor-pointer'>
+                  <p>Download Report</p>
+                  <Image
+                      src="/globe.svg"
+                      alt="Logo"
+                      width={15}
+                      height={0}
+                      className='ml-2'
+                    />
+                </div>
+              </CSVLink>
+              
             </div>
 
           </div>
