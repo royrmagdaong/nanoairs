@@ -134,7 +134,8 @@ useEffect(() => {
           </div> */}
 
           <div className=" grid grid-cols-5 grid-row-6">
-            <div className="mb-3 mr-3 col-span-5 lg:col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
+            <div className="mb-3  col-span-5 lg:col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg">
+            {/* <div className="mb-3 mr-3 col-span-5 lg:col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg"> */}
             {/* <div className="mb-3 mr-3 col-span-4 row-span-1 border border-gray-300 dark:border-gray-600 rounded-lg"> */}
               <AIDiagnosis />
             </div>
@@ -142,7 +143,8 @@ useEffect(() => {
             {/* <div className=" col-span-1 row-span-6 border-gray-300 dark:border-gray-700 border rounded-lg"> */}
               <ActivityLogs />
             </div>
-            <div className="mr-3 col-span-5 lg:col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg">
+            <div className=" col-span-5 lg:col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg">
+            {/* <div className="mr-3 col-span-5 lg:col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg"> */}
             {/* <div className="mr-3 col-span-4 row-span-5 border-gray-300 dark:border-gray-600 border rounded-lg"> */}
               <ChartParamsComparison />
             </div>
