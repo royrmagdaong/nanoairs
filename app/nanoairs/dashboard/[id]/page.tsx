@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation'
 
 
 import NavBar from "@/app/components/navbar";
@@ -9,7 +10,7 @@ import SensorCard from "@/app/components/sensor-card"
 import AIDiagnosis from "@/app/components/ai-diagnosis"
 import ChartParamsComparison from "@/app/components/chart-params-comparison"
 import ActivityLogs from "@/app/components/activity-logs"
-import { time } from 'console';
+import apiURL from "@/app/utils/url"
 
 
 type SensorReading = {
@@ -32,6 +33,7 @@ const [windowSize, setWindowSize] = useState({
   width: 0,
   height: 0,
 });
+const pathname = usePathname()
 
 
 useEffect(()=>{
@@ -68,8 +70,24 @@ useEffect(() => {
 
   async function loadLatestSensorReading() {
     try {
-      // const res = await fetch("http://localhost:3005/sensor");
-      const res = await fetch("http://nanoairs.home.arpa/sensor");
+      let params
+        if(pathname.includes('raceways-1')){
+           params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "1"
+          });
+        }
+
+        if(pathname.includes('raceways-2')){
+          params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "2"
+          });
+        }
+
+      console.log('dashboard fetch', `${apiURL}/sensor?${params}`)
+
+      const res = await fetch(`${apiURL}/sensor?${params}`);
 
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 

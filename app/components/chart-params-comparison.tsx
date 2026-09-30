@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from "react";
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { usePathname } from 'next/navigation'
 import { Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
+import apiURL from "@/app/utils/url"
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -43,6 +46,7 @@ export default function ChartParamsComparison() {
   const [co2Label, setCO2Label] = useState(false)
   const [darkMode, setDarkMode] = useState<boolean>(false)
   const [dateRange, setDateRange] = useState<string>('')
+  const pathname = usePathname()
 
   const [paramComparison, setParamComparison] = useState(
           {
@@ -692,16 +696,37 @@ export default function ChartParamsComparison() {
 
     async function refreshChart() {
       try {
-        const params = new URLSearchParams({
-          siteName: "UPV",
-          pondNumber: "1",
-          limit: "30",
-          skip: "0",
-          sort: 'asc'
-        });
+        // const params = new URLSearchParams({
+        //   siteName: "UPV",
+        //   pondNumber: "1",
+        //   limit: "30",
+        //   skip: "0",
+        //   sort: 'asc'
+        // });
+        console.log('PARAMS', pathname)
+        let params
+        if(pathname.includes('raceways-1')){
+           params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "1",
+            limit: "30",
+            skip: "0",
+            sort: 'asc'
+          });
+        }
+
+        if(pathname.includes('raceways-2')){
+          params = new URLSearchParams({
+            siteName: "UPV",
+            pondNumber: "2",
+            limit: "30",
+            skip: "0",
+            sort: 'asc'
+          });
+        }
 
         const res = await fetch(
-          `http://nanoairs.home.arpa/sensor/sensors?${params}`,
+          `${apiURL}/sensor/sensors?${params}`,
           {
             signal: controller.signal,
             cache: "no-store",
